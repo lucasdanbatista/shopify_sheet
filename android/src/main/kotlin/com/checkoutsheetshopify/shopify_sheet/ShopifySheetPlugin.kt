@@ -89,10 +89,16 @@ class ShopifySheetPlugin : FlutterPlugin, MethodChannel.MethodCallHandler, Activ
                         }
 
                         override fun onCheckoutFailed(error: CheckoutException) {
+                            var event = "failed"
+                            var message = error.message
+                            if (error.errorCode == "error_receiving_message") {
+                                event = "completed"
+                                message = null
+                            }
                             eventSink?.success(
                                 mapOf(
-                                    "event" to "failed",
-                                    "error" to error.message // Pass error message
+                                    "event" to event,
+                                    "error" to message
                                 )
                             )
                         }
