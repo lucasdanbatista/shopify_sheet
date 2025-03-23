@@ -16,4 +16,4 @@
 
 ## 0.0.5
 
-* 8e6815ed fix(android): suppress HTTP 404 error_receiving_message
+* fix(android): suppress HTTP 404 error_receiving_message
